@@ -45,7 +45,7 @@ def inyectar_css_premium():
         /* Ocultar elementos innecesarios */
         header[data-testid="stHeader"], footer { display: none !important; }
 
-/* -------------------------------------------------------------
+        //* -------------------------------------------------------------
            FIX DEFINITIVO PARA LA FLECHA EN INTERNET
            ------------------------------------------------------------- */
         /* Buscamos el botón de apertura por su icono de flecha nativo */
