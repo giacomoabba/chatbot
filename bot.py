@@ -45,24 +45,30 @@ def inyectar_css_premium():
         /* Ocultar elementos innecesarios */
         header[data-testid="stHeader"], footer { display: none !important; }
 
-        /* -------------------------------------------------------------
-           FIX: FLECHA DE CONTROL (SIEMPRE VISIBLE AL CERRAR EL PANEL)
+/* -------------------------------------------------------------
+           FIX DEFINITIVO PARA LA FLECHA EN INTERNET
            ------------------------------------------------------------- */
-        [data-testid="collapsedControl"] {
-            background-color: #558b2f !important; 
+        /* Buscamos el botón de apertura por su icono de flecha nativo */
+        button[data-testid="baseButton-header"] {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background-color: #558b2f !important; /* Círculo verde */
             border-radius: 50% !important;
             z-index: 9999999 !important; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
             position: fixed !important;
-            top: 20px !important;
-            left: 20px !important;
-            width: 45px !important;
-            height: 45px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+            top: 15px !important;
+            left: 15px !important;
+            width: 40px !important;
+            height: 40px !important;
         }
-        [data-testid="collapsedControl"] svg { fill: white !important; }
+        
+        /* Pintamos la flecha de color blanco para que resalte */
+        button[data-testid="baseButton-header"] svg { 
+            fill: #ffffff !important; 
+            color: #ffffff !important; 
+        }
 
         /* SIDEBAR BLANCO CON BORDE VERDE */
         section[data-testid="stSidebar"] { 
