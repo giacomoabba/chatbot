@@ -18,7 +18,7 @@ st.set_page_config(
 # 2. NUEVO SISTEMA DE CONEXIÓN: GROQ (LLAMA 3.1)
 # ==============================================================================
 # 🔑 PEGA AQUÍ TU CLAVE DE GROQ (Consíguela en console.groq.com) 🔑
-API_KEY = "TU_CLAVE_DE_GROQ_AQUI"
+API_KEY = "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"
 
 try:
     client = Groq(api_key=API_KEY)
