@@ -18,7 +18,7 @@ st.set_page_config(
 # 2. NUEVO SISTEMA DE CONEXIÓN: GROQ (LLAMA 3.1)
 # ==============================================================================
 # 🔑 PEGA AQUÍ TU CLAVE DE GROQ (Consíguela en console.groq.com) 🔑
-API_KEY = "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"
+API_KEY = "TU_CLAVE_DE_GROQ_AQUI"
 
 try:
     client = Groq(api_key=API_KEY)
@@ -26,150 +26,160 @@ except Exception as e:
     st.error(f"Falla crítica: No se pudo conectar con el servidor. {e}")
 
 # ==============================================================================
-# 3. MOTOR DE ESTILOS (PSICOLOGÍA DEL COLOR Y FIXES VISUALES)
+# 3. MOTOR DE ESTILOS (TU BASE ORIGINAL 100% OPERATIVA CON COLORES ACTUALIZADOS)
 # ==============================================================================
 def inyectar_css_premium():
     st.markdown("""
     <style>
-        /* Fondo General de la App: Degradado Verde Claro y Alegre */
-        .stApp { 
-            background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%) !important; 
-        }
+        /* Fondo General de la App: Tu degradado verde claro */
+        .stApp { background: linear-gradient(135deg, #e4f4ee 0%, #f0f9f6 50%, #e6f0fa 100%); }
         
-        /* Texto General */
+        /* Textos Generales del Chat */
         html, body, p, span, div, label, h1, h2, h3, h4, li, [data-testid="stMarkdownContainer"] p {
-            color: #2e7d32 !important;
-            font-family: 'Inter', sans-serif;
+            color: #121212 !important;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
         }
-
-        /* Ocultar elementos innecesarios */
-        header[data-testid="stHeader"], footer { display: none !important; }
-
-        //* -------------------------------------------------------------
-           FIX DEFINITIVO PARA LA FLECHA EN INTERNET
-           ------------------------------------------------------------- */
-        /* Buscamos el botón de apertura por su icono de flecha nativo */
-        button[data-testid="baseButton-header"] {
+        /* Ocultamos el pie de página, pero dejamos la cabecera viva para no matar la flecha */
+        footer { display: none !important; }
+        header[data-testid="stHeader"] { background: transparent !important; }
+        
+        /* -------------------------------------------------------------
+            CONTROL DE LA FLECHA (TU CÓDIGO ORIGINAL QUE SÍ FUNCIONABA)
+            ------------------------------------------------------------- */
+        /* Esto aplica SOLO cuando el panel está cerrado (Flecha flotante) */
+        [data-testid="collapsedControl"] {
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            background-color: #558b2f !important; /* Círculo verde */
+            background-color: #558b2f !important; /* Tu círculo verde destacado */
             border-radius: 50% !important;
-            z-index: 9999999 !important; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
-            position: fixed !important;
-            top: 15px !important;
-            left: 15px !important;
-            width: 40px !important;
-            height: 40px !important;
+            margin-top: 15px !important;
+            margin-left: 15px !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+            z-index: 999999 !important; /* Fuerza a estar al frente siempre */
         }
-        
-        /* Pintamos la flecha de color blanco para que resalte */
-        button[data-testid="baseButton-header"] svg { 
-            fill: #ffffff !important; 
+        [data-testid="collapsedControl"] svg { 
+            fill: #ffffff !important; /* Flecha blanca */
             color: #ffffff !important; 
         }
-
-        /* SIDEBAR BLANCO CON BORDE VERDE */
-        section[data-testid="stSidebar"] { 
-            background-color: #ffffff !important; 
-            border-right: 4px solid #aed581;
+        
+        /* Flecha verde normal cuando el panel está abierto (Sin romper la UI) */
+        section[data-testid="stSidebar"] [data-testid="baseButton-header"] svg { 
+            fill: #2e7d32 !important; 
+            color: #2e7d32 !important; 
         }
         
-        /* BOTONES DEL MENÚ LATERAL */
+        /* ------------------------------------------------------------- */
+        
+        /* Menú lateral (Sidebar) con sutil línea verde */
+        section[data-testid="stSidebar"] { 
+            background-color: #ffffff !important; 
+            border-right: 3px solid #aed581;
+            box-shadow: 2px 0 15px rgba(0,0,0,0.03);
+        }
+        
+        /* Botones del Historial en el Sidebar */
         .stButton > button {
-            border-radius: 20px !important;
-            border: 2px solid #8bc34a !important;
+            border-radius: 12px !important;
+            border: 1px solid #8bc34a !important;
             background-color: #f1f8e9 !important;
             color: #33691e !important;
-            font-weight: 700 !important;
-            transition: 0.3s ease;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            width: 100%;
+            text-align: left;
         }
         .stButton > button:hover {
             background-color: #dcedc8 !important;
+            border-color: #7cb342 !important;
             transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        /* Botón de "Nueva Charla" */
+        .btn-primario > button {
+            background-color: #558b2f !important;
+            color: #ffffff !important;
+            border-radius: 20px !important;
+            text-align: center !important;
+            justify-content: center !important;
+            font-weight: bold;
+        }
+        .btn-primario > button:hover {
+            background-color: #33691e !important;
+            color: #ffffff !important;
         }
 
-        /* BURBUJAS DE CHAT DIFERENCIADAS */
-        /* Usuario: Azul Cielo Suave */
+        /* Burbujas del Chat */
+        [data-testid="stChatMessage"] {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            border-radius: 30px !important;
+            padding: 25px !important;
+            margin-bottom: 25px !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.6) !important;
+            backdrop-filter: blur(12px);
+        }
+        /* Burbuja del Usuario */
         [data-testid="stChatMessage"]:has([data-testid="stMarkdownContainer"] p:contains("user")) {
             background-color: #e3f2fd !important;
-            border: 2px solid #90caf9 !important;
-            border-radius: 25px 25px 5px 25px !important;
+            border-bottom-right-radius: 8px !important;
+            border: 1px solid #90caf9 !important;
         }
-        /* ZenBot: Amarillo/Verde Crema Relajante */
+        /* Burbuja del Asistente */
         [data-testid="stChatMessage"]:has([data-testid="stMarkdownContainer"] p:contains("assistant")) {
             background-color: #f9fbe7 !important;
-            border: 2px solid #d4e157 !important;
-            border-radius: 25px 25px 25px 5px !important;
+            border-bottom-left-radius: 8px !important;
+            border: 1px solid #d4e157 !important;
         }
-
-/* -------------------------------------------------------------
-           FIX: BARRA DE ESCRITURA TOTALMENTE INTEGRADA (CON ESQUINAS PERFECTAS)
+        
+        /* -------------------------------------------------------------
+           BARRA DE ESCRITURA INTEGRADA (FONDO NEGRO Y ESQUINAS LIMPIAS)
            ------------------------------------------------------------- */
-        /* El contenedor exterior de la franja negra inferior */
-        [data-testid="stChatInputContainer"] {
-            background-color: #121212 !important;
-            border-top: 2px solid #7cb342 !important; /* Línea verde superior continua */
-            padding: 15px 20px 25px 20px !important;
+        .stChatInputContainer { 
+            padding-bottom: 30px !important; 
+            background-color: #121212 !important; /* Todo el fondo inferior negro */
+            border-top: 2px solid #7cb342 !important; /* Línea verde superior */
         }
-
-        /* La caja donde escribes: Eliminamos cortes raros en las esquinas */
+        
         [data-testid="stChatInput"] {
-            background-color: #121212 !important; 
-            border-radius: 20px !important; /* Esquinas pulidas y balanceadas */
-            border: 2px solid #558b2f !important; /* Borde verde uniforme */
-            box-shadow: none !important; 
-            overflow: hidden !important; /* Esto corta cualquier residuo gris en las esquinas */
-        }
-
-        /* Ajuste fino para limpiar los bordes internos nativos de Streamlit */
-        [data-testid="stChatInput"] > div {
-            background-color: #121212 !important;
+            background-color: transparent !important;
             border: none !important;
             box-shadow: none !important;
         }
-
-        /* El espacio interno de escritura */
-        [data-testid="stChatInput"] textarea {
-            color: #ffffff !important; /* Texto en blanco */
-            background-color: #121212 !important;
-            padding-top: 10px !important;
+        
+        /* Caja interna donde se escribe */
+        [data-testid="stChatInput"] > div {
+            border-radius: 20px !important; /* Esquinas redondeadas perfectas sin cortes */
+            border: 2px solid #558b2f !important; /* Borde verde del contorno */
+            background-color: #121212 !important; /* Fondo negro interno */
+            box-shadow: none !important;
+            overflow: hidden !important;
         }
         
-        /* Texto informativo de fondo */
+        /* Configuración de las letras por dentro */
+        [data-testid="stChatInput"] textarea {
+            color: #ffffff !important; /* Letras totalmente blancas al escribir */
+            background-color: #121212 !important;
+        }
         [data-testid="stChatInput"] textarea::placeholder {
-            color: #757575 !important;
+            color: #aaaaaa !important; /* Texto de fondo gris claro */
         }
-
-        /* Botón de enviar integrado (Flechita minimalista verde) */
+        
+        /* Botón de Enviar (Flechita verde) */
         [data-testid="stChatInput"] button {
-            background-color: transparent !important; 
-            color: #7cb342 !important; 
+            color: #7cb342 !important;
+            background-color: transparent !important;
         }
 
-        /* -------------------------------------------------------------
-           EXTRA FIX: FLECHA FLOTANTE DEL PANEL DE CONTROL
-           ------------------------------------------------------------- */
-        [data-testid="collapsedControl"] {
-            background-color: #558b2f !important; 
-            border-radius: 50% !important;
-            z-index: 9999999 !important; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
-            position: fixed !important;
-            top: 20px !important;
-            left: 20px !important;
-            width: 45px !important;
-            height: 45px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
+        [data-testid="stChatInput"]:focus-within > div { 
+            border-color: #7cb342 !important; 
         }
-        [data-testid="collapsedControl"] svg { fill: white !important; }
     </style>
     """, unsafe_allow_html=True)
 
-# ─── AGREGA ESTA LÍNEA JUSTO AQUÍ (PEGADA AL BORDE IZQUIERDO) ───
+# Activar la función de estilos
 inyectar_css_premium()
 
 # ==============================================================================
@@ -229,6 +239,7 @@ def obtener_instrucciones_ia(mood):
     4. RESPUESTAS GENERALES CORTAS: Si te pregunta algo de conocimiento general (ej. "cuánto es 5x5" o "qué es la fotosíntesis"), respóndelo directa y amablemente.
     """
     return instrucciones, temperatura
+
 def generar_titulo_inteligente(mensaje):
     try:
         respuesta = client.chat.completions.create(
@@ -262,7 +273,7 @@ with st.sidebar:
 
 with st.sidebar:
     st.title("Panel de Control")
-# Menú vertical de estado de ánimo
+    # Menú vertical de estado de ánimo
     opciones_mood = ["😔 Agotado", "⛅ Regular", "🌤️ Bien", "☀️ Activo", "✨ Zen"]
     
     # Asegurarnos de que no haya error si el estado actual no está en la lista
@@ -306,7 +317,7 @@ with st.sidebar:
                         else:
                             crear_nueva_sesion()
                     st.rerun()
-           
+            
     st.divider()
     st.markdown("#### 💾 Guardar Reflexiones")
     if len(mensajes) > 0:
